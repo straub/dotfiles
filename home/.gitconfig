@@ -1,0 +1,24 @@
+[user]
+        name = David Straub
+        email = scinvention@gmail.com
+[color]
+        ui = true
+[alias]
+        ci = commit
+        co = checkout
+
+        s = status
+        st = status
+        statsu = status
+        stat = status
+
+        in = fetch upstream --dry-run
+        out = push origin --dry-run
+
+        whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+        whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+
+        edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
+        add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
+
+        filemode = "!git diff --summary | grep --color 'mode change 100644 => 100755' | cut -d' ' -f7- | xargs -d'\n' chmod -x"
