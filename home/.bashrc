@@ -73,6 +73,14 @@ function ask() # useful for integration with other functions
 }
 
 #-------------------------------------------------------------
+# Homeshick
+#-------------------------------------------------------------
+
+if [ -f "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash" ]; then
+    . "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
+fi
+
+#-------------------------------------------------------------
 # Grunt
 #-------------------------------------------------------------
 
