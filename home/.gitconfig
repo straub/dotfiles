@@ -7,10 +7,15 @@
         ci = commit
         co = checkout
 
+        br = branch
+
         s = status
         st = status
         statsu = status
         stat = status
+
+        unstage = reset HEAD --
+        last = log -1 HEAD
 
         in = fetch upstream --dry-run
         out = push origin --dry-run
@@ -22,3 +27,11 @@
         add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
 
         filemode = "!git diff --summary | grep --color 'mode change 100644 => 100755' | cut -d' ' -f7- | xargs -d'\n' chmod -x"
+
+        ignore = update-index --assume-unchanged
+        unignore = update-index --no-assume-unchanged
+        ignored = !git ls-files -v | grep "^[[:lower:]]"
+
+        ignore-npm = !git ls-files -z node_modules/ | xargs -0 git ignore
+        unignore-npm = !git ls-files -z node_modules/ | xargs -0 git unignore
+

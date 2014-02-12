@@ -10,6 +10,8 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
+
+
 #-------------------------------------------------------------
 # Colors
 #-------------------------------------------------------------
@@ -73,8 +75,20 @@ function ask() # useful for integration with other functions
 }
 
 #-------------------------------------------------------------
+# Grunt
+#-------------------------------------------------------------
+
+if hash grunt 2>/dev/null; then
+    eval "$(grunt --completion=bash)"
+fi
+
+#-------------------------------------------------------------
 # Git
 #-------------------------------------------------------------
+
+if [ -f /etc/bash_completion.d/git ]; then
+    . /etc/bash_completion.d/git
+fi
 
 # Git Colors.
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
