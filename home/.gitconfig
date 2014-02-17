@@ -37,6 +37,9 @@
         ignore-npm = !git ls-files -z node_modules/ | xargs -0 git ignore
         unignore-npm = !git ls-files -z node_modules/ | xargs -0 git unignore
 
+[core]
+        editor = vim
+
 # From https://gist.github.com/ruediger/5647207
 [diff "lisp"]
       xfuncname = "^(\\(.*)$"
