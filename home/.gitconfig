@@ -14,6 +14,8 @@
         statsu = status
         stat = status
 
+        undo = reset --soft 'HEAD^'
+
         unstage = reset HEAD --
         last = log -1 HEAD
 
