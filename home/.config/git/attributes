@@ -19,4 +19,5 @@
 *.html  diff=html
 *.xhtml diff=html
 *.f     diff=fortran
+*.js    diff=js
 

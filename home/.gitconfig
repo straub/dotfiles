@@ -52,3 +52,6 @@
 [diff "rust"] # Thanks to csabahenk
       xfuncname = "^[ \t]*(pub|)[ \t]*((fn|struct|enum|impl|trait|mod)[^;]*)$"
 
+[diff "js"]
+      xfuncname = "function[^{]{"
+
