@@ -52,7 +52,7 @@ alias v='vim'
 
 alias rs='source $HOME/.bashrc'
 
-alias homeshick="source $HOME/.homesick/repos/homeshick/bin/homeshick.sh"
+source $HOME/.homesick/repos/homeshick/homeshick.sh;
 
 function repeat()
 {
