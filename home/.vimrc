@@ -20,6 +20,9 @@ set listchars=trail:·,tab:··
 " mousewheel scroll
 set mouse=a
 
+" case-insensitive searching
+set ignorecase
+
 " open two files in split screen
 if argc() == 2
   silent all
