@@ -54,6 +54,11 @@ alias rs='source $HOME/.bashrc'
 
 source $HOME/.homesick/repos/homeshick/homeshick.sh;
 
+# Source z (https://github.com/rupa/z)
+if [ -r $HOME/.homesick/repos/dotfiles/z/z.sh ]; then
+    source $HOME/.homesick/repos/dotfiles/z/z.sh;
+fi
+
 function repeat()
 {
     local i max
