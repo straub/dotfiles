@@ -54,6 +54,9 @@ alias rs='source $HOME/.bashrc'
 
 source $HOME/.homesick/repos/homeshick/homeshick.sh;
 
+export _Z_NO_RESOLVE_SYMLINKS=1;
+export _Z_NO_PROMPT_COMMAND=1; # Handle this manually after the custom prompt stuff below.
+
 # Source z (https://github.com/rupa/z)
 if [ -r $HOME/.homesick/repos/dotfiles/z/z.sh ]; then
     source $HOME/.homesick/repos/dotfiles/z/z.sh;
@@ -343,6 +346,12 @@ _powerprompt()
 function powerprompt()
 {
     PROMPT_COMMAND=_powerprompt
+
+    # For z (https://github.com/rupa/z)
+    # populate directory list. avoid clobbering other PROMPT_COMMANDs.
+    grep "_z --add" <<< "$PROMPT_COMMAND" >/dev/null || {
+        PROMPT_COMMAND="$PROMPT_COMMAND"$'\n''_z --add "$(pwd '$_Z_RESOLVE_SYMLINKS' 2>/dev/null)" 2>/dev/null;'
+    }
 }
 
 powerprompt     # This is the default prompt -- might be slow.
