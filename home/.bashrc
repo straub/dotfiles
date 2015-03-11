@@ -282,12 +282,6 @@ export TIMEFORMAT=$'\nreal %3R\tuser %3U\tsys %3S\tpcpu %P\n'
 export HISTTIMEFORMAT="%H:%M > "
 export HISTIGNORE="&:bg:fg:ll:h"
 
-function _exit()        # Function to run upon exit of shell.
-{
-    echo -e "\e[1;31mBye!\e[0m"
-}
-trap _exit EXIT
-
 #-------------------------------------------------------------
 # File & String-related Functions:
 #-------------------------------------------------------------
