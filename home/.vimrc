@@ -29,8 +29,3 @@ set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
 
-" open two files in split screen
-if argc() == 2
-  silent all
-endif
-
