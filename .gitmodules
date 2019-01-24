@@ -2,5 +2,5 @@
 	path = z
 	url = https://github.com/rupa/z.git
 [submodule "home/.vim/vim-fugitive"]
-	path = home/.vim/vim-fugitive
+	path = home/.vim/bundle/vim-fugitive
 	url = git@github.com:tpope/vim-fugitive.git
