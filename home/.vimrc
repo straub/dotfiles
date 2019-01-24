@@ -29,6 +29,10 @@ set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
 
+" filetype and syntax support
+filetype indent plugin on
+syntax on
+
 " pathogen.vim - https://github.com/tpope/vim-pathogen
 execute pathogen#infect()
 
