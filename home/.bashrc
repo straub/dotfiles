@@ -136,9 +136,8 @@ git_prompt ()
     if [ -z "$GIT_DIR" ]; then
         return 0
     fi
-    GIT_HEAD=`cat $GIT_DIR/HEAD`
-    GIT_BRANCH=${GIT_HEAD##*/}
-    if [ ${#GIT_BRANCH} -eq 40 ]; then
+    GIT_BRANCH=`git rev-parse --abbrev-ref HEAD 2>/dev/null`
+    if [ "$GIT_BRANCH" = "HEAD" ]; then
         GIT_BRANCH="(no branch)"
     fi
     STATUS=`git status --porcelain`
