@@ -1,0 +1,12 @@
+# bundle files
+--ignore-file=match:/bundle[.].+$/
+--ignore-dir=build
+# minified Javascript
+--ignore-file=match:/[.-]min[.]js$/
+--ignore-file=match:/[.]js[.]min$
+# NewRelic log
+--ignore-file=is:newrelic_agent.log
+# eslint Cache
+--ignore-file=is:.eslintcache
+# test results
+--ignore-file=match:/.*test-results.xml$/
