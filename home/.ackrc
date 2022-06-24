@@ -10,3 +10,6 @@
 --ignore-file=is:.eslintcache
 # test results
 --ignore-file=match:/.*test-results.xml$/
+# code coverage
+--ignore-dir=coverage
+--ignore-dir=.nyc_output
