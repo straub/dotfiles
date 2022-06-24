@@ -334,13 +334,20 @@ function extract()      # Handy Extract Program.
 function fastprompt()
 {
     unset PROMPT_COMMAND
-    PS1="[\u@\h $cyan\t$NC \w]\$ ";
+    PS1="[\u@\h $cyan\t$NC \w]\n\$ ";
 }
 
 _powerprompt()
 {
+    local EXIT="$?" # This needs to be first
+    PS1=""
+
+    if [ $EXIT != 0 ]; then
+        PS1+="${red}\\\$?=${EXIT}${NC} " # Add red if exit code non 0
+    fi
+
     LOAD=$(uptime|sed -e "s/.*: \([^,]*\).*/\1/" -e "s/ //g");
-    PS1="[\h $cyan\t $LOAD$NC \w$(git_prompt)]\$ "
+    PS1+="[\h $cyan\t $LOAD$NC \w$(git_prompt)]\n\$ "
 }
 
 function powerprompt()
