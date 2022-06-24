@@ -33,6 +33,9 @@ set undodir=~/.vim/undo//
 filetype indent plugin on
 syntax on
 
+" yaml indentation
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
 " pathogen.vim - https://github.com/tpope/vim-pathogen
 execute pathogen#infect()
 
