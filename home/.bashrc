@@ -80,6 +80,13 @@ function ask() # useful for integration with other functions
     esac
 }
 
+function my()
+{
+    preset=$1
+    shift
+    mysql --defaults-group-suffix=_$preset "$@" -A
+}
+
 #-------------------------------------------------------------
 # Homeshick
 #-------------------------------------------------------------
