@@ -37,9 +37,12 @@
         ignore-npm = !git ls-files -z node_modules/ | xargs -0 git ignore
         unignore-npm = !git ls-files -z node_modules/ | xargs -0 git unignore
 
+        # https://stackoverflow.com/a/7532131
+        apply-gitignore = !git ls-files -ci --exclude-standard -z | xargs -0 git rm --cached
+
 [core]
         editor = vim
-	excludesfile = /home/straub/.gitignore
+        excludesfile = /home/straub/.gitignore
 
 # From https://gist.github.com/ruediger/5647207
 [diff "lisp"]
