@@ -428,3 +428,9 @@ alias ssh-add-work='ssh-add ~/.ssh/id_rsa_work'
 
 export TERRAGRUNT_DOWNLOAD="$HOME/.terragrunt-cache"
 export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+eval "$(thefuck --alias)"
