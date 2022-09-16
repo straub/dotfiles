@@ -24,6 +24,8 @@ brew "redis"
 brew "thefuck"
 brew "infracost"
 brew "tflint"
+brew "awslogs"
+brew "shellcheck"
 
 cask "dbeaver-community"
 
