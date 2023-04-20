@@ -52,7 +52,9 @@ alias v='vim'
 
 alias rs='source $HOME/.bashrc'
 
-source $HOME/.homesick/repos/homeshick/homeshick.sh;
+#source $HOME/.homesick/repos/homeshick/homeshick.sh;
+export HOMESHICK_DIR=$HOMEBREW_PREFIX/opt/homeshick
+source "$HOMEBREW_PREFIX/opt/homeshick/homeshick.sh"
 
 export _Z_NO_RESOLVE_SYMLINKS=1;
 export _Z_NO_PROMPT_COMMAND=1; # Handle this manually after the custom prompt stuff below.
@@ -86,6 +88,8 @@ function my()
     shift
     mysql --defaults-group-suffix=_$preset "$@" -A
 }
+
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
 #-------------------------------------------------------------
 # Homeshick
@@ -370,6 +374,10 @@ export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
 export COMPOSE_DOCKER_CLI_BUILD=1
 export DOCKER_BUILDKIT=1
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 cdnvm() {
     cd "$@";
     nvm_path=$(nvm_find_up .nvmrc | tr -d '\n')
@@ -418,10 +426,14 @@ cd $PWD
 alias tf='terraform'
 alias tg='terragrunt'
 
-export SSH_AUTH_SOCK=~/.ssh/ssh-agent.$HOSTNAME.sock
-ssh-add -l 2>/dev/null >/dev/null
-if [ $? -ge 2 ]; then
-  ssh-agent -a "$SSH_AUTH_SOCK" >/dev/null
+if [ -z "$SSH_AUTH_SOCK" ]; then
+   # Check for a currently running instance of the agent
+   RUNNING_AGENT="`ps -ax | grep 'ssh-agent -s' | grep -v grep | wc -l | tr -d '[:space:]'`"
+   if [ "$RUNNING_AGENT" = "0" ]; then
+        # Launch a new instance of the agent
+        ssh-agent -s &> .ssh/ssh-agent
+   fi
+   eval `cat .ssh/ssh-agent`
 fi
 
 alias ssh-add-work='ssh-add ~/.ssh/id_rsa_work'
@@ -429,9 +441,5 @@ alias ssh-add-work='ssh-add ~/.ssh/id_rsa_work'
 export TERRAGRUNT_DOWNLOAD="$HOME/.terragrunt-cache"
 export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
 mkdir -p $TF_PLUGIN_CACHE_DIR
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 eval "$(thefuck --alias)"

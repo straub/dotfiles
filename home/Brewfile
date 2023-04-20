@@ -16,6 +16,11 @@ brew "pyenv"
 brew "ssh-copy-id"
 brew "tfenv"
 
+brew "bash"
+brew "bash-completion"
+brew "docker-completion"
+brew "docker-compose-completion"
+
 brew "terragrunt"
 brew "hadolint"
 brew "homeshick"
@@ -26,8 +31,11 @@ brew "infracost"
 brew "tflint"
 brew "awslogs"
 brew "shellcheck"
+brew "ack"
+brew "telnet"
 
 cask "dbeaver-community"
+cask "sdm"
 
 # cask "temurin8"
 # cask "temurin11"
